@@ -1,5 +1,5 @@
 'use client'
-import { ZIndex } from '@tsparticles/engine'
+
 import React from 'react'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
@@ -11,17 +11,21 @@ import { Input } from '../ui/input'
 import { Button } from '../ui/button'
 import { Loader2 } from 'lucide-react'
 
-type Props = {}
 
-const ProfileForm = (props: Props) => {
+type Props = {
+    user:any
+    onUpdate: any
+}
+
+const ProfileForm = ({user, onUpdate}: Props) => {
     const [isLoading, setIsLoading] = useState(false)
 
     const form = useForm<z.infer<typeof EditUserProfileSchema>>({
         mode:'onChange',
         resolver: zodResolver(EditUserProfileSchema),
         defaultValues: {
-            name: "Naro",
-            email: "naro.email@fuzzie.com",
+            name: user.name,
+            email: user.email,
         }
     })
   return (
