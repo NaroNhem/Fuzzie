@@ -23,7 +23,7 @@ const UploadCareButton = ({ onUpload }: Props) => {
         router.refresh()
       }
     }
-    ctxProviderRef.current.addEventListener('file-upload-success', handleUpload)
+    
   }, [])
 
   return (
